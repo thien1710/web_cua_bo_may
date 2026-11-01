@@ -1,0 +1,598 @@
+
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dịch Thuật Trung - Việt</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Overlay làm mờ nền để chữ dễ đọc -->
+    <div class="bg-overlay"></div>
+
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="logo">
+            <i class="fa-solid fa-language"></i>
+            <span>Dịch Thuật Trung - Việt</span>
+        </div>
+        <nav class="nav-links">
+            <a href="#overview"><i class="fa-solid fa-house"></i> Tong quan</a>
+            <a href="#language-info"><i class="fa-solid fa-book-open"></i> Ngon Ngu</a>
+            <a href="#translator-section"><i class="fa-solid fa-arrow-right-arrow-left"></i> Dich Thuat</a>
+            <a href="#contact"><i class="fa-solid fa-envelope"></i> Lien He</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Banner Tiêu đề -->
+        <section class="hero-banner">
+            <h1>Dịch Thuật Trung - Việt</h1>
+            <p>Giải pháp chuyển đổi ngôn ngữ nhanh chóng, chính xác và mượt mà.</p>
+        </section>
+
+        <!-- Mục 1: Giới thiệu tổng quan -->
+        <section id="overview" class="card-section">
+            <h2 class="section-title"><i class="fa-solid fa-circle-info"></i> Giới Thiệu Tổng Quan</h2>
+            <div class="content-grid">
+                <div class="text-block">
+                    <p>Trang web <strong>Dịch Thuật Trung - Việt</strong> được xây dựng nhằm cung cấp giải pháp tra cứu và chuyển ngữ tối ưu cho học sinh, sinh viên và người đi làm. Với giao diện trực quan, tối giản và hiệu năng cao, bạn có thể dễ dàng chuyển đổi qua lại giữa tiếng Trung và tiếng Việt chỉ bằng một thao tác click.</p>
+                    <p>Hệ thống hỗ trợ nhập liệu linh hoạt, nhận diện tự động và phản hồi kết quả tức thì, giúp tiết kiệm tối đa thời gian học tập và làm việc.</p>
+                </div>
+                <div class="image-block">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop" alt="Tổng quan trang web">
+                </div>
+            </div>
+        </section>
+
+        <!-- Mục 2: Giới thiệu về Ngôn ngữ Trung - Việt -->
+        <section id="language-info" class="card-section">
+            <h2 class="section-title"><i class="fa-solid fa-earth-asia"></i> Giới Thiệu Ngôn Ngữ Trung - Việt</h2>
+            <div class="content-grid reverse">
+                <div class="text-block">
+                    <p>Tiếng Trung và Tiếng Việt có mối quan hệ giao thoa văn hóa và ngôn ngữ lâu đời. Trong vốn từ vựng tiếng Việt, các từ Hán-Việt chiếm một tỷ lệ rất lớn, giúp người Việt có lợi thế tự nhiên khi học từ vựng tiếng Trung.</p>
+                    <p>Tuy nhiên, sự khác biệt về ngữ pháp, hệ thống chữ viết biểu hình (Hán tự) và phát âm (Pinyin) vẫn là rào cản lớn. Trang web được tạo ra để thu hẹp khoảng cách đó, hỗ trợ kết nối tri thức giữa hai ngôn ngữ.</p>
+                </div>
+                <div class="image-block">
+                    <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=800&auto=format&fit=crop" alt="Ngôn ngữ Trung Việt">
+                </div>
+            </div>
+        </section>
+
+        <!-- Mục 3: Khung bảng dịch -->
+        <section id="translator-section" class="card-section translator-card">
+            <h2 class="section-title"><i class="fa-solid fa-language"></i> Công Cụ Dịch Thuật</h2>
+            
+            <div class="translator-box">
+                <!-- Thanh điều khiển ngôn ngữ -->
+                <div class="translator-controls">
+                    <span id="source-lang-label" class="lang-tag">Tiếng Trung (zh)</span>
+                    <button id="swap-btn" title="Đổi chiều ngôn ngữ">
+                        <i class="fa-solid fa-right-left"></i>
+                    </button>
+                    <span id="target-lang-label" class="lang-tag">Tiếng Việt (vi)</span>
+                </div>
+
+                <!-- Khu vực nhập & xuất văn bản -->
+                <div class="translator-io">
+                    <div class="input-area">
+                        <textarea id="source-text" placeholder="Nhập văn bản tiếng Trung tại đây..."></textarea>
+                        <div class="io-footer">
+                            <span id="char-count">0 / 5000</span>
+                            <button id="clear-btn" class="btn-secondary"><i class="fa-solid fa-trash-can"></i> Xóa</button>
+                        </div>
+                    </div>
+                    <div class="output-area">
+                        <textarea id="target-text" readonly placeholder="Bản dịch sẽ xuất hiện ở đây..."></textarea>
+                        <div class="io-footer">
+                            <button id="copy-btn" class="btn-secondary"><i class="fa-solid fa-copy"></i> Sao chép</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nút hành động dịch -->
+                <div class="action-bar">
+                    <button id="translate-btn" class="btn-primary">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Dịch Ngay
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer / Thông tin liên hệ -->
+    <footer id="contact" class="footer">
+        <div class="footer-container">
+            <h3><i class="fa-solid fa-address-book"></i> Thông Tin Liên Hệ</h3>
+            <div class="contact-cards">
+                <div class="contact-card">
+                    <i class="fa-solid fa-user-gear contact-icon"></i>
+                    <div class="contact-info">
+                        <h4>Lê Ngọc Tâm</h4>
+                        <p><i class="fa-solid fa-phone"></i> 0909 220 635</p>
+                        <p><i class="fa-solid fa-envelope"></i> lngtam35@gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <i class="fa-solid fa-user-gear contact-icon"></i>
+                    <div class="contact-info">
+                        <h4>Huỳnh Ánh Dương</h4>
+                        <p><i class="fa-solid fa-phone"></i> 0919 943 843</p>
+                        <p><i class="fa-solid fa-envelope"></i> anhduong31208@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+            <p class="copyright">© 2026 Dịch Thuật Trung - Việt. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+style.css
+
+:root {
+    --primary-color: #0054E6;
+    --primary-hover: #0040b3;
+    --bg-light: #F4F7FC;
+    --white: #FFFFFF;
+    --text-dark: #1E293B;
+    --text-muted: #64748B;
+    --border-color: #E2E8F0;
+    --shadow: 0 10px 25px -5px rgba(0, 84, 230, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    color: var(--text-dark);
+    line-height: 1.6;
+    background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1920&auto=format&fit=crop');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    min-height: 100vh;
+}
+
+.bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(244, 247, 252, 0.88);
+    z-index: -1;
+}
+
+/* Header Navbar */
+.header {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+
+.nav-links a:hover {
+    opacity: 0.8;
+}
+
+/* Layout Main Container */
+.container {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+.hero-banner {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: var(--primary-color);
+}
+
+.hero-banner h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.hero-banner p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+/* Common Card Sections */
+.card-section {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.section-title {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    border-bottom: 2px solid #EBF2FF;
+    padding-bottom: 0.5rem;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.content-grid.reverse .text-block {
+    order: 2;
+}
+
+.content-grid.reverse .image-block {
+    order: 1;
+}
+
+.image-block img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.text-block p {
+    margin-bottom: 1rem;
+    color: #475569;
+}
+
+/* Section Dịch Thuật */
+.translator-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.translator-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #F8FAFC;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
+
+.lang-tag {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1.05rem;
+}
+
+#swap-btn {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    color: var(--primary-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#swap-btn:hover {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.translator-io {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.input-area, .output-area {
+    display: flex;
+    flex-direction: column;
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1rem;
+    transition: border-color 0.2s;
+}
+
+.input-area:focus-within {
+    border-color: var(--primary-color);
+}
+
+textarea {
+    width: 100%;
+    height: 180px;
+    border: none;
+    outline: none;
+    resize: none;
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.io-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.5rem;
+    border-top: 1px solid #F1F5F9;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* Nút bấm */
+.action-bar {
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 0.85rem 2.5rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    box-shadow: 0 4px 12px rgba(0, 84, 230, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+.btn-secondary {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: color 0.2s;
+}
+
+.btn-secondary:hover {
+    color: var(--primary-color);
+}
+
+/* Footer & Liên hệ */
+.footer {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 3rem 1.5rem 1.5rem;
+    margin-top: 3rem;
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer h3 {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.contact-cards {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.contact-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1.5rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    min-width: 280px;
+    text-align: left;
+}
+
+.contact-icon {
+    font-size: 2rem;
+    color: #93C5FD;
+}
+
+.contact-info h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+}
+
+.contact-info p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.copyright {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 1.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content-grid, .translator-io {
+        grid-template-columns: 1fr;
+    }
+    
+    .content-grid.reverse .text-block {
+        order: 1;
+    }
+    
+    .header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+
+script.js
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Lấy các element từ DOM
+    const sourceText = document.getElementById('source-text');
+    const targetText = document.getElementById('target-text');
+    const translateBtn = document.getElementById('translate-btn');
+    const swapBtn = document.getElementById('swap-btn');
+    const clearBtn = document.getElementById('clear-btn');
+    const copyBtn = document.getElementById('copy-btn');
+    const charCount = document.getElementById('char-count');
+    const sourceLabel = document.getElementById('source-lang-label');
+    const targetLabel = document.getElementById('target-lang-label');
+
+    // Trạng thái ngôn ngữ ban đầu
+    let sourceLang = 'zh';
+    let targetLang = 'vi';
+
+    // Đếm số ký tự khi nhập
+    sourceText.addEventListener('input', () => {
+        const length = sourceText.value.length;
+        charCount.textContent = `${length} / 5000`;
+    });
+
+    // Đảo chiều ngôn ngữ dịch
+    swapBtn.addEventListener('click', () => {
+        // Đổi giá trị variable
+        [sourceLang, targetLang] = [targetLang, sourceLang];
+
+        // Đổi nhãn hiển thị
+        if (sourceLang === 'zh') {
+            sourceLabel.textContent = 'Tiếng Trung (zh)';
+            targetLabel.textContent = 'Tiếng Việt (vi)';
+            sourceText.placeholder = 'Nhập văn bản tiếng Trung tại đây...';
+        } else {
+            sourceLabel.textContent = 'Tiếng Việt (vi)';
+            targetLabel.textContent = 'Tiếng Trung (zh)';
+            sourceText.placeholder = 'Nhập văn bản tiếng Việt tại đây...';
+        }
+
+        // Tráo đổi nội dung 2 ô văn bản nếu có
+        const tempText = sourceText.value;
+        sourceText.value = targetText.value;
+        targetText.value = tempText;
+        
+        charCount.textContent = `${sourceText.value.length} / 5000`;
+    });
+
+    // Xóa văn bản nhập
+    clearBtn.addEventListener('click', () => {
+        sourceText.value = '';
+        targetText.value = '';
+        charCount.textContent = '0 / 5000';
+    });
+
+    // Sao chép kết quả dịch
+    copyBtn.addEventListener('click', () => {
+        if (!targetText.value) return;
+        
+        navigator.clipboard.writeText(targetText.value).then(() => {
+            const originalText = copyBtn.innerHTML;
+            copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Đã chép!';
+            setTimeout(() => {
+                copyBtn.innerHTML = originalText;
+            }, 2000);
+        });
+    });
+
+    // Gọi API dịch thuật miễn phí (MyMemory API)
+    translateBtn.addEventListener('click', async () => {
+        const text = sourceText.value.trim();
+        if (!text) {
+            alert('Vui lòng nhập nội dung cần dịch!');
+            return;
+        }
+
+        // Cập nhật trạng thái loading
+        translateBtn.disabled = true;
+        translateBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Đang dịch...';
+        targetText.value = 'Đang xử lý bản dịch...';
+
+        try {
+            const langPair = `${sourceLang}|${targetLang}`;
+            const response = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${langPair}`);
+            const data = await response.json();
+
+            if (data && data.responseData) {
+                targetText.value = data.responseData.translatedText;
+            } else {
+                targetText.value = 'Không thể dịch văn bản này. Vui lòng thử lại!';
+            }
+        } catch (error) {
+            console.error('Lỗi khi gọi API dịch:', error);
+            targetText.value = 'Đã có lỗi xảy ra trong quá trình kết nối API!';
+        } finally {
+            translateBtn.disabled = false;
+            translateBtn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> Dịch Ngay';
+        }
+    });
+});
+
